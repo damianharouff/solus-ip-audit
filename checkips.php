@@ -71,7 +71,7 @@ foreach ($virttypes as $data) {
 
 } 
 
-print "Found 11 nodes." . PHP_EOL;
+print "Found " . count($nodelist) . " nodes." . PHP_EOL;
 
 //get a list of assigned IPs for each node
 foreach ($nodelist as $nodeid) {
