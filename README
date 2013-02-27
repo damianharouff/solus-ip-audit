@@ -1,0 +1,43 @@
+SolusVM/WHMCS IP Auditor 
+Version 1.0
+by Damian Harouff - http://ipxcore.com
+Released under the WTFPL license - http://www.wtfpl.net/about/
+==================================================================================
+
+This script:
+
+-retrieves a list of nodes from Solus
+-retrieves a list of IPs by node from Solus
+-on a per-IP basis, interfaces with the WHMCS DB to determine if WHMCS knows about
+ the IP address
+-generates a list of IPs that are not in WHMCS
+
+==================================================================================
+
+Requirements:
+
+PHP 5.2+ (untested on older versions)
+PHP PDO
+PHP cURL
+
+==================================================================================
+
+It's recommended to run it on the same machine as your WHMCS installation, as
+most MySQL installations are set to not be internet-accessible.
+
+To set it up, edit the following variables in checkips.php:
+
+$API_url 	- URL for Solus API
+$API_id 	- ID for Solus API
+$API_key	- key for Solus API
+
+$db_database 		- your WHMCS database
+$db_user		- a database user that has SELECT capability for your WHMCS database
+$db_password		- database user's password
+$db_host = "localhost"; - probably 'localhost', change if you know it needs to be changed
+$db_charset = "latin1"; - our WHMCS database' charset is latin1, not sure if this is default or what
+
+Then save checkips.php, exit your editor, and invoke with:
+
+php checkips.php
+
