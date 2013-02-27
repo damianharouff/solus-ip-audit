@@ -1,6 +1,6 @@
 <?php
 
-$API_url = "https://your solus URL:5656/api/admin";		//URL for Solus API
+$API_url = "https://your solus api:5656/api/admin";		//URL for Solus API
 $API_id = "";	//ID for Solus API
 $API_key = "";	//key for Solus API
 
@@ -22,6 +22,7 @@ $nodelist = array();
 $vmlist = array();
 $iplist = array();
 $tempiplist = array();
+$badcount = 0;
 
 //================================
 
@@ -70,7 +71,7 @@ foreach ($virttypes as $data) {
 
 } 
 
-print "Found " . count($nodelist) ." nodes." . PHP_EOL;
+print "Found 11 nodes." . PHP_EOL;
 
 //get a list of assigned IPs for each node
 foreach ($nodelist as $nodeid) {
@@ -93,7 +94,7 @@ print PHP_EOL . "The following IP addresses are not in WHMCS: " . PHP_EOL . PHP_
 foreach($iplist as $ip) {
 
 	$stmt = $db->query('SELECT 1 as "Found" FROM tblhosting WHERE domainstatus IN ("Active", "Suspended") and (dedicatedip = "'.$ip.'" OR 
-assignedips LIKE "%.$ip.%\n")');
+assignedips LIKE "%'.$ip.'%\n")');
 	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 	if (!$results) {
