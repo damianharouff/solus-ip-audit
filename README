@@ -41,3 +41,15 @@ Then save checkips.php, exit your editor, and invoke with:
 
 php checkips.php
 
+==================================================================================
+
+CHANGELOG:
+
+Version 1.1
+27/Feb/2013:
+-corrected an SQL error
+-defined $badcount as a variable
+
+Version 1.0
+26/Feb/2013:
+-initial release
